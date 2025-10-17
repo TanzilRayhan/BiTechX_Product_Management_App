@@ -3,6 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { Trash2, Eye, Tag, DollarSign, Edit } from 'lucide-react';
 import { Product } from '@/types';
 import { formatPrice } from '@/lib/utils';
@@ -13,6 +14,7 @@ interface ProductCardProps {
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product, onDelete }) => {
+  const router = useRouter();
   const [imageError, setImageError] = useState(false);
   const firstImage = Array.isArray(product.images) && product.images.length > 0 ? product.images[0] : undefined;
   const imageUrl = firstImage || 'https://via.placeholder.com/600x400?text=No+Image';
@@ -67,27 +69,23 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onDelete }) =
           </h3>
         </Link>
 
-        {/* <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
-          {product.description || 'No description available'}
-        </p> */}
-
         <div className="flex gap-2 pt-2">
-          <Link 
-            href={`/products/${product.slug}`} 
-            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-[#EFF1F3] rounded-xl hover:from-[#AD8A64] hover:to-[#4E6E5D] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-medium text-sm"
+          <button 
+            onClick={() => router.push(`/products/${product.slug}`)}
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-[#EFF1F3] rounded-xl hover:from-[#AD8A64] hover:to-[#4E6E5D] transition-all duration-300 shadow-md hover:shadow-lg font-medium text-sm"
           >
             <Eye size={16} />
             <span>View Details</span>
-          </Link>
-          <Link 
-            href={`/products/edit/${product.slug}`}
-            className="flex items-center justify-center px-4 py-3 bg-gradient-to-r from-[#4E6E5D] to-[#4E6E5D]/80 text-white rounded-xl hover:from-[#4E6E5D]/90 hover:to-[#4E6E5D] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+          </button>
+          <button 
+            onClick={() => router.push(`/products/edit/${product.slug}`)}
+            className="flex items-center justify-center px-4 py-3 bg-gradient-to-r from-[#4E6E5D] to-[#4E6E5D]/80 text-white rounded-xl hover:from-[#4E6E5D]/90 hover:to-[#4E6E5D] transition-all duration-300 shadow-md hover:shadow-lg"
           >
             <Edit size={16} />
-          </Link>
+          </button>
           <button
             onClick={() => onDelete(product.id)}
-            className="px-4 py-3 bg-gradient-to-r from-[#A44A3F] to-[#A44A3F]/80 text-white rounded-xl hover:from-[#A44A3F]/90 hover:to-[#A44A3F] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+            className="px-4 py-3 bg-gradient-to-r from-[#A44A3F] to-[#A44A3F]/80 text-white rounded-xl hover:from-[#A44A3F]/90 hover:to-[#A44A3F] transition-all duration-300 shadow-md hover:shadow-lg"
           >
             <Trash2 size={16} />
           </button>
