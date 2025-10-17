@@ -2,6 +2,11 @@
 
 A modern, full-featured product management application built with Next.js 15, TypeScript, and Redux Toolkit. This application provides a comprehensive solution for managing product catalogs with an intuitive user interface and robust functionality.
 
+## 🔗 Links
+
+- **Live Link**: [https://bitechx-product-hub.vercel.app/](https://bitechx-product-hub.vercel.app/)
+
+
 ![Next.js](https://img.shields.io/badge/Next.js-15.5.6-black?style=flat&logo=next.js)
 ![React](https://img.shields.io/badge/React-19.1.0-blue?style=flat&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat&logo=typescript)
@@ -517,6 +522,3 @@ Authorization: Bearer {token}
 
 ---
 
-## 🔗 Links
-
-- **Live Demo**: [https://your-app.vercel.app](https://your-app.vercel.app)
