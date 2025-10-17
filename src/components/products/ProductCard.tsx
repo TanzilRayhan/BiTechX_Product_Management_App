@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Trash2, Eye, Tag, DollarSign } from 'lucide-react';
+import { Trash2, Eye, Tag, DollarSign, Edit } from 'lucide-react';
 import { Product } from '@/types';
 import { formatPrice } from '@/lib/utils';
 
@@ -67,20 +67,25 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onDelete }) =
           </h3>
         </Link>
 
-        <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
+        {/* <p className="text-sm text-gray-600 line-clamp-2 leading-relaxed">
           {product.description || 'No description available'}
-        </p>
+        </p> */}
 
         <div className="flex gap-2 pt-2">
           <Link href={`/products/${product.slug}`} className="flex-1">
             <button className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-[#EFF1F3] rounded-xl hover:from-[#AD8A64] hover:to-[#4E6E5D] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-medium text-sm">
               <Eye size={16} />
-              <span>View</span>
+              <span>View Details</span>
+            </button>
+          </Link>
+          <Link href={`/products/edit/${product.slug}`}>
+            <button className="px-4 py-3 bg-gradient-to-r from-[#4E6E5D] to-[#4E6E5D]/80 text-white rounded-xl hover:from-[#4E6E5D]/90 hover:to-[#4E6E5D] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
+              <Edit size={16} />
             </button>
           </Link>
           <button
             onClick={() => onDelete(product.id)}
-            className="px-4 py-2.5 bg-gradient-to-r from-[#A44A3F] to-[#A44A3F]/80 text-white rounded-xl hover:from-[#A44A3F]/90 hover:to-[#A44A3F] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+            className="px-4 py-3 bg-gradient-to-r from-[#A44A3F] to-[#A44A3F]/80 text-white rounded-xl hover:from-[#A44A3F]/90 hover:to-[#A44A3F] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
           >
             <Trash2 size={16} />
           </button>

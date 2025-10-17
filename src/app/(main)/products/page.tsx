@@ -93,7 +93,7 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="relative w-full py-8">
+    <div className="relative w-full pb-8">
       <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-8 animate-fade-in">
           <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#0D1821] via-[#4E6E5D] to-[#AD8A64] bg-clip-text text-transparent mb-3">
@@ -113,20 +113,19 @@ export default function ProductsPage() {
               className="w-full pl-12 pr-4 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:border-[#AD8A64] focus:ring-4 focus:ring-[#AD8A64]/10 outline-none transition-all duration-300 text-[#0D1821] placeholder-gray-400 shadow-sm hover:shadow-md"
             />
           </div>
-          <Link href="/products/new">
-            <button className="flex items-center gap-2 px-12 py-4 bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-[#EFF1F3] rounded-xl hover:from-[#AD8A64] hover:to-[#4E6E5D] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-semibold whitespace-nowrap">
+          <Link href="/products/new" className="w-full sm:w-auto">
+            <button className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 sm:px-12 py-4 bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-[#EFF1F3] rounded-xl hover:from-[#AD8A64] hover:to-[#4E6E5D] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-semibold whitespace-nowrap">
               <Plus size={20} />
-              <span className="hidden sm:inline">Add Product</span>
-              <span className="sm:hidden">Add</span>
+              <span>Add Product</span>
             </button>
           </Link>
         </div>
 
         <div className="mb-8">
-          <div className="flex flex-wrap place-content-center items-center gap-5">
+          <div className="flex flex-wrap gap-3">
             <button
               onClick={() => setSelectedCategory('')}
-              className={`px-10 py-3 rounded-xl font-medium transition-all duration-300 whitespace-nowrap ${
+              className={`flex-1 px-6 sm:px-8 md:px-6 py-3 rounded-xl font-medium transition-all duration-300 text-sm sm:text-base min-w-[120px] ${
                 selectedCategory === ''
                   ? 'bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-white shadow-lg '
                   : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-[#4E6E5D] hover:shadow-md'
@@ -138,7 +137,7 @@ export default function ProductsPage() {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`px-10 py-3 rounded-xl font-medium transition-all duration-300 whitespace-nowrap ${
+                className={`flex-1 px-6 sm:px-8 md:px-4 py-3 rounded-xl font-medium transition-all duration-300  text-sm sm:text-base min-w-[120px] ${
                   selectedCategory === category.id
                     ? 'bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] rounded-xl text-white shadow-lg '
                     : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-[#4E6E5D] hover:shadow-md'
@@ -215,37 +214,44 @@ export default function ProductsPage() {
                   <button
                     onClick={handlePrevPage}
                     disabled={offset === 0}
-                    className="px-4 py-2 bg-white border-2 border-gray-200 text-[#0D1821] rounded-xl hover:border-[#4E6E5D] hover:bg-[#4E6E5D] hover:text-white disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-[#0D1821] disabled:hover:border-gray-200 transition-all duration-300 font-medium shadow-sm"
+                    className="px-3 sm:px-4 py-2 text-sm sm:text-base bg-white border-2 border-gray-200 text-[#0D1821] rounded-xl hover:border-[#4E6E5D] hover:bg-[#4E6E5D] hover:text-white disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-[#0D1821] disabled:hover:border-gray-200 transition-all duration-300 font-medium shadow-sm"
                   >
-                    Previous
+                    <span className="hidden sm:inline">Previous</span>
+                    <span className="sm:hidden">Prev</span>
                   </button>
                   
 
-                  <div className="flex gap-2">
-                    {Array.from({ length: 5 }, (_, i) => i + 1).map((pageNum) => {
+                  <div className="flex gap-1.5 sm:gap-2">
+                    {(() => {
                       const currentPage = Math.floor(offset / PRODUCTS_PER_PAGE) + 1;
-                      const isActive = pageNum === currentPage;
+                      const currentRange = Math.floor((currentPage - 1) / 5);
+                      const startPage = currentRange * 5 + 1;
+                      const endPage = Math.min(startPage + 4, startPage + 4);
                       
-                      return (
-                        <button
-                          key={pageNum}
-                          onClick={() => setOffset((pageNum - 1) * PRODUCTS_PER_PAGE)}
-                          className={`w-10 h-10 rounded-xl font-semibold transition-all duration-300 shadow-sm ${
-                            isActive
-                              ? 'bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-white shadow-md scale-105'
-                              : 'bg-white border-2 border-gray-200 text-[#0D1821] hover:border-[#4E6E5D] hover:shadow-md'
-                          }`}
-                        >
-                          {pageNum}
-                        </button>
-                      );
-                    })}
+                      return Array.from({ length: 5 }, (_, i) => startPage + i).map((pageNum) => {
+                        const isActive = pageNum === currentPage;
+                        
+                        return (
+                          <button
+                            key={pageNum}
+                            onClick={() => setOffset((pageNum - 1) * PRODUCTS_PER_PAGE)}
+                            className={`w-8 h-8 sm:w-10 sm:h-10 text-sm sm:text-base rounded-xl font-semibold transition-all duration-300 shadow-sm ${
+                              isActive
+                                ? 'bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-white shadow-md scale-105'
+                                : 'bg-white border-2 border-gray-200 text-[#0D1821] hover:border-[#4E6E5D] hover:shadow-md'
+                            }`}
+                          >
+                            {pageNum}
+                          </button>
+                        );
+                      });
+                    })()}
                   </div>
                   
                   <button
                     onClick={handleNextPage}
                     disabled={products.length < PRODUCTS_PER_PAGE}
-                    className="px-4 py-2 bg-white border-2 border-gray-200 text-[#0D1821] rounded-xl hover:border-[#4E6E5D] hover:bg-[#4E6E5D] hover:text-white disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-[#0D1821] disabled:hover:border-gray-200 transition-all duration-300 font-medium shadow-sm"
+                    className="px-3 sm:px-4 py-2 text-sm sm:text-base bg-white border-2 border-gray-200 text-[#0D1821] rounded-xl hover:border-[#4E6E5D] hover:bg-[#4E6E5D] hover:text-white disabled:opacity-40 disabled:cursor-not-allowed disabled:hover:bg-white disabled:hover:text-[#0D1821] disabled:hover:border-gray-200 transition-all duration-300 font-medium shadow-sm"
                   >
                     Next
                   </button>

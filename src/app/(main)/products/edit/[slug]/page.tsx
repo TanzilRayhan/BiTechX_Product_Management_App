@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter, useParams } from 'next/navigation';
-import { useGetProductByIdQuery, useUpdateProductMutation } from '@/store/api/productsApi';
+import { useGetProductBySlugQuery, useUpdateProductMutation } from '@/store/api/productsApi';
 import ProductForm from '@/components/products/ProductForm';
 import { Spinner } from '@/components/ui/Spinner';
 import toast from 'react-hot-toast';
@@ -11,9 +11,9 @@ import Link from 'next/link';
 export default function EditProductPage() {
   const router = useRouter();
   const params = useParams();
-  const id = params.id as string;
+  const slug = params.slug as string;
 
-  const { data: product, isLoading: isLoadingProduct, error } = useGetProductByIdQuery(id);
+  const { data: product, isLoading: isLoadingProduct, error } = useGetProductBySlugQuery(slug);
   const [updateProduct, { isLoading: isUpdating }] = useUpdateProductMutation();
 
   const handleSubmit = async (data: {

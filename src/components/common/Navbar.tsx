@@ -57,22 +57,23 @@ export const Navbar: React.FC = () => {
               <>
               
                 {user && (
-                  <div className="hidden lg:flex items-center gap-2 px-4 py-2 bg-white/5 rounded-lg border border-white/10">
-                    <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#AD8A64] to-[#4E6E5D] flex items-center justify-center text-[#EFF1F3] font-semibold text-sm">
+                  <div className="hidden lg:flex items-center gap-2 px-6 py-2 bg-white/5 rounded-lg border border-white/10">
+                    {/* <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#AD8A64] to-[#4E6E5D] flex items-center justify-center text-[#EFF1F3] font-semibold text-sm">
                       {user.email[0].toUpperCase()}
-                    </div>
-                    <span className="text-sm text-[#EFF1F3] font-medium max-w-32 truncate">
-                      {user.name || user.email.split('@')[0]}
+                    </div> */}
+                    <span className="text-sm text-[#EFF1F3] font-medium">
+                      {user.email}
                     </span>
                   </div>
                 )}
 
                 <button
                   onClick={handleLogout}
-                  className="flex items-center gap-2 px-4 py-2.5 bg-white/10 text-[#EFF1F3] rounded-xl hover:bg-[#A44A3F] hover:text-white transition-all duration-300 group"
+                  className="flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-[#A44A3F] to-[#A44A3F]/80 text-[#EFF1F3] rounded-lg hover:bg-[#A44A3F] hover:text-white transition-all duration-200 group min-w-[40px] h-[40px]"
+                  title="Logout"
                 >
-                  <LogOut size={18} className="group-hover:rotate-12 transition-transform" />
-                  <span className="hidden sm:inline text-sm font-medium">Logout</span>
+                  <LogOut size={20} className="group-hover:rotate-12 transition-transform" />
+                  <span className="hidden lg:inline text-sm font-medium">Logout</span>
                 </button>
               </>
             )}
