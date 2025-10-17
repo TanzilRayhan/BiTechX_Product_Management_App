@@ -93,65 +93,62 @@ export default function ProductsPage() {
   };
 
   return (
-    <div className="relative w-full px-4 sm:px-6 lg:px-8 py-8 max-w-screen-2xl mx-auto">
-
-      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-8 animate-fade-in">
-        <div>
-          <h1 className="text-4xl font-bold bg-gradient-to-r from-[#0D1821] to-[#4E6E5D] bg-clip-text text-transparent">
+    <div className="relative w-full py-8">
+      <div className="max-w-screen-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-8 animate-fade-in">
+          <h1 className="text-5xl md:text-6xl font-bold bg-gradient-to-r from-[#0D1821] via-[#4E6E5D] to-[#AD8A64] bg-clip-text text-transparent mb-3">
             Products
           </h1>
-          <p className="text-gray-600 mt-2">Manage your product inventory</p>
+          <p className="text-gray-600 text-lg">Manage your product inventory with ease</p>
         </div>
-        <Link href="/products/new">
-          <button className="flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-[#EFF1F3] rounded-xl hover:from-[#AD8A64] hover:to-[#4E6E5D] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-semibold">
-            <Plus size={20} />
-            <span>Add Product</span>
-          </button>
-        </Link>
-      </div>
 
-
-      <div className="mb-6">
-        <div className="relative max-w-2xl">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#4E6E5D]" size={20} />
-          <input
-            type="text"
-            placeholder="Search products by name..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-12 pr-4 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:border-[#AD8A64] focus:ring-4 focus:ring-[#AD8A64]/10 outline-none transition-all duration-300 text-[#0D1821] placeholder-gray-400 shadow-sm hover:shadow-md"
-          />
+        <div className="flex flex-col sm:flex-row gap-4 items-stretch sm:items-center mb-6">
+          <div className="relative flex-1">
+            <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-[#4E6E5D]" size={20} />
+            <input
+              type="text"
+              placeholder="Search products by name..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full pl-12 pr-4 py-4 bg-white border-2 border-gray-200 rounded-2xl focus:border-[#AD8A64] focus:ring-4 focus:ring-[#AD8A64]/10 outline-none transition-all duration-300 text-[#0D1821] placeholder-gray-400 shadow-sm hover:shadow-md"
+            />
+          </div>
+          <Link href="/products/new">
+            <button className="flex items-center gap-2 px-12 py-4 bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-[#EFF1F3] rounded-xl hover:from-[#AD8A64] hover:to-[#4E6E5D] transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 font-semibold whitespace-nowrap">
+              <Plus size={20} />
+              <span className="hidden sm:inline">Add Product</span>
+              <span className="sm:hidden">Add</span>
+            </button>
+          </Link>
         </div>
-      </div>
 
-
-      <div className="mb-8 overflow-x-auto">
-        <div className="flex gap-3 min-w-max pb-2">
-          <button
-            onClick={() => setSelectedCategory('')}
-            className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 whitespace-nowrap ${
-              selectedCategory === ''
-                ? 'bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-white shadow-lg scale-105'
-                : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-[#4E6E5D] hover:shadow-md'
-            }`}
-          >
-            All Categories
-          </button>
-          {categories?.map((category) => (
+        <div className="mb-8">
+          <div className="flex flex-wrap place-content-center items-center gap-5">
             <button
-              key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 whitespace-nowrap ${
-                selectedCategory === category.id
-                  ? 'bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-white shadow-lg scale-105'
+              onClick={() => setSelectedCategory('')}
+              className={`px-10 py-3 rounded-xl font-medium transition-all duration-300 whitespace-nowrap ${
+                selectedCategory === ''
+                  ? 'bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-white shadow-lg '
                   : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-[#4E6E5D] hover:shadow-md'
               }`}
             >
-              {category.name}
+              All Categories
             </button>
-          ))}
+            {categories?.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`px-10 py-3 rounded-xl font-medium transition-all duration-300 whitespace-nowrap ${
+                  selectedCategory === category.id
+                    ? 'bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] rounded-xl text-white shadow-lg '
+                    : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-[#4E6E5D] hover:shadow-md'
+                }`}
+              >
+                {category.name}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
 
 
       {!isLoading && isFetching && (
@@ -270,6 +267,7 @@ export default function ProductsPage() {
         cancelText="Cancel"
         isLoading={isDeleting}
       />
+      </div>
     </div>
   );
 }

@@ -32,8 +32,23 @@ export default function ProductDetailsPage() {
       router.push('/products');
     } catch (error: any) {
       console.error('Failed to delete product:', error);
+      console.error('Error type:', typeof error);
+      console.error('Error keys:', error ? Object.keys(error) : 'no keys');
+      console.error('Error stringified:', JSON.stringify(error, null, 2));
+      
       setShowDeleteDialog(false);
-      toast.error(error?.data?.message || 'Failed to delete product. Please try again.');
+      
+      let errorMessage = 'Failed to delete product. Please try again.';
+      
+      if (error?.data?.message) {
+        errorMessage = error.data.message;
+      } else if (error?.message) {
+        errorMessage = error.message;
+      } else if (error?.status) {
+        errorMessage = `Failed to delete product (Error ${error.status})`;
+      }
+      
+      toast.error(errorMessage);
     }
   };
 

@@ -1,22 +1,25 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { AuthState, User } from '@/types';
 
-const loadInitialState = (): AuthState => {
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('token');
-    const userStr = localStorage.getItem('user');
-    const user = userStr ? JSON.parse(userStr) : null;
-    return { token, user };
-  }
-  return { token: null, user: null };
+const initialState: AuthState = {
+  token: null,
+  user: null,
 };
-
-const initialState: AuthState = loadInitialState();
 
 const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
+    hydrateAuth: (state) => {
+      if (typeof window !== 'undefined') {
+        const token = localStorage.getItem('token');
+        const userStr = localStorage.getItem('user');
+        if (token) {
+          state.token = token;
+          state.user = userStr ? JSON.parse(userStr) : null;
+        }
+      }
+    },
     setCredentials: (
       state,
       action: PayloadAction<{ token: string; user: User }>
@@ -41,5 +44,5 @@ const authSlice = createSlice({
   },
 });
 
-export const { setCredentials, logout } = authSlice.actions;
+export const { hydrateAuth, setCredentials, logout } = authSlice.actions;
 export default authSlice.reducer;

@@ -66,13 +66,24 @@ export default function LoginPage() {
       console.error('Login error:', error);
       
       const errorMessage = error.response?.data?.message || error.message;
+      const statusCode = error.response?.status;
       
-      if (errorMessage?.includes('application') || errorMessage?.includes('applied')) {
+      if (statusCode === 429) {
+        const retryAfter = error.response?.headers['retry-after'] || 60;
+        toast.error(`Too many login attempts. Please wait ${retryAfter} seconds and try again.`, {
+          duration: 6000,
+          icon: '⏱️',
+        });
+      } else if (errorMessage?.includes('application') || errorMessage?.includes('applied')) {
         toast.error('Email not found. Please use the email you used when you applied to BiTechX.');
-      } else if (error.response?.status === 401) {
+      } else if (statusCode === 401) {
         toast.error('Invalid email. Please check your email and try again.');
-      } else if (error.response?.status === 404) {
+      } else if (statusCode === 404) {
         toast.error('Email not registered. Please use your BiTechX application email.');
+      } else if (statusCode === 500 || statusCode >= 500) {
+        toast.error('Server error. Please try again later.', {
+          duration: 5000,
+        });
       } else {
         toast.error(errorMessage || 'Login failed. Please try again.');
       }

@@ -32,6 +32,8 @@ apiClient.interceptors.response.use(
         localStorage.removeItem('token');
         window.location.href = '/login';
       }
+    } else if (error.response?.status === 429) {
+      console.warn('Rate limit exceeded. Please wait before making more requests.');
     }
     return Promise.reject(error);
   }

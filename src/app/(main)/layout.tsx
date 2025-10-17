@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { useAppSelector } from '@/store/hooks';
 import { Navbar } from '@/components/common/Navbar';
@@ -14,15 +14,19 @@ export default function MainLayout({
 }) {
   const router = useRouter();
   const token = useAppSelector((state) => state.auth.token);
-  const isLoading = !token;
+  const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
-    if (!token) {
+    setIsHydrated(true);
+  }, []);
+
+  useEffect(() => {
+    if (isHydrated && !token) {
       router.push('/login');
     }
-  }, [token, router]);
+  }, [isHydrated, token, router]);
 
-  if (isLoading) {
+  if (!isHydrated || !token) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-[#0D1821] via-[#4E6E5D] to-[#0D1821] flex items-center justify-center">
         <Spinner size="lg" />
