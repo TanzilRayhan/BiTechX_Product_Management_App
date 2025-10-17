@@ -149,7 +149,7 @@ export default function ProductForm({ initialData, onSubmit, isLoading }: Produc
 
         <div className="space-y-6">
    
-          <div className="animate-fade-in">
+          <div>
             <label htmlFor="name" className="block text-sm font-semibold text-[#0D1821] mb-2">
               Product Name <span className="text-[#A44A3F]">*</span>
             </label>
@@ -168,14 +168,14 @@ export default function ProductForm({ initialData, onSubmit, isLoading }: Produc
               />
             </div>
             {errors.name && (
-              <p className="mt-2 text-sm text-[#A44A3F] animate-shake flex items-center gap-1">
+              <p className="mt-2 text-sm text-[#A44A3F] flex items-center gap-1">
                 <X size={14} /> {errors.name.message}
               </p>
             )}
           </div>
 
  
-          <div className="animate-fade-in" style={{ animationDelay: '100ms' }}>
+          <div>
             <label htmlFor="price" className="block text-sm font-semibold text-[#0D1821] mb-2">
               Price (USD) <span className="text-[#A44A3F]">*</span>
             </label>
@@ -195,13 +195,13 @@ export default function ProductForm({ initialData, onSubmit, isLoading }: Produc
               />
             </div>
             {errors.price && (
-              <p className="mt-2 text-sm text-[#A44A3F] animate-shake flex items-center gap-1">
+              <p className="mt-2 text-sm text-[#A44A3F] flex items-center gap-1">
                 <X size={14} /> {errors.price.message}
               </p>
             )}
           </div>
 
-          <div className="animate-fade-in" style={{ animationDelay: '200ms' }}>
+          <div>
             <label htmlFor="categoryId" className="block text-sm font-semibold text-[#0D1821] mb-2">
               Category <span className="text-[#A44A3F]">*</span>
             </label>
@@ -230,13 +230,13 @@ export default function ProductForm({ initialData, onSubmit, isLoading }: Produc
               </div>
             </div>
             {errors.categoryId && (
-              <p className="mt-2 text-sm text-[#A44A3F] animate-shake flex items-center gap-1">
+              <p className="mt-2 text-sm text-[#A44A3F] flex items-center gap-1">
                 <X size={14} /> {errors.categoryId.message}
               </p>
             )}
           </div>
 
-          <div className="animate-fade-in" style={{ animationDelay: '300ms' }}>
+          <div>
             <label htmlFor="images" className="block text-sm font-semibold text-[#0D1821] mb-2">
               Image URL <span className="text-[#A44A3F]">*</span>
             </label>
@@ -255,7 +255,7 @@ export default function ProductForm({ initialData, onSubmit, isLoading }: Produc
               />
             </div>
             {errors.images && (
-              <p className="mt-2 text-sm text-[#A44A3F] animate-shake flex items-center gap-1">
+              <p className="mt-2 text-sm text-[#A44A3F] flex items-center gap-1">
                 <X size={14} /> {errors.images.message}
               </p>
             )}
@@ -265,7 +265,7 @@ export default function ProductForm({ initialData, onSubmit, isLoading }: Produc
 
         <div className="space-y-6">
 
-          <div className="animate-fade-in" style={{ animationDelay: '400ms' }}>
+          <div>
             <label htmlFor="description" className="block text-sm font-semibold text-[#0D1821] mb-2">
               Description <span className="text-[#A44A3F]">*</span>
             </label>
@@ -284,14 +284,14 @@ export default function ProductForm({ initialData, onSubmit, isLoading }: Produc
               />
             </div>
             {errors.description && (
-              <p className="mt-2 text-sm text-[#A44A3F] animate-shake flex items-center gap-1">
+              <p className="mt-2 text-sm text-[#A44A3F] flex items-center gap-1">
                 <X size={14} /> {errors.description.message}
               </p>
             )}
           </div>
 
 
-          <div className="animate-fade-in" style={{ animationDelay: '500ms' }}>
+          <div>
             <label className="block text-sm font-semibold text-[#0D1821] mb-2">
               Image Preview
             </label>

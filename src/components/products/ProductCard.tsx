@@ -72,16 +72,18 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product, onDelete }) =
         </p> */}
 
         <div className="flex gap-2 pt-2">
-          <Link href={`/products/${product.slug}`} className="flex-1">
-            <button className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-[#EFF1F3] rounded-xl hover:from-[#AD8A64] hover:to-[#4E6E5D] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-medium text-sm">
-              <Eye size={16} />
-              <span>View Details</span>
-            </button>
+          <Link 
+            href={`/products/${product.slug}`} 
+            className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-[#EFF1F3] rounded-xl hover:from-[#AD8A64] hover:to-[#4E6E5D] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5 font-medium text-sm"
+          >
+            <Eye size={16} />
+            <span>View Details</span>
           </Link>
-          <Link href={`/products/edit/${product.slug}`}>
-            <button className="px-4 py-3 bg-gradient-to-r from-[#4E6E5D] to-[#4E6E5D]/80 text-white rounded-xl hover:from-[#4E6E5D]/90 hover:to-[#4E6E5D] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5">
-              <Edit size={16} />
-            </button>
+          <Link 
+            href={`/products/edit/${product.slug}`}
+            className="flex items-center justify-center px-4 py-3 bg-gradient-to-r from-[#4E6E5D] to-[#4E6E5D]/80 text-white rounded-xl hover:from-[#4E6E5D]/90 hover:to-[#4E6E5D] transition-all duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
+          >
+            <Edit size={16} />
           </Link>
           <button
             onClick={() => onDelete(product.id)}
