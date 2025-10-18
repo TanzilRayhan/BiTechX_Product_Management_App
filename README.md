@@ -1,34 +1,22 @@
-# 🛍️ Product Management App
+# 🛍️ BiTexhX - Product Management App
 
 A modern, full-featured product management application built with Next.js 15, TypeScript, and Redux Toolkit. This application provides a comprehensive solution for managing product catalogs with an intuitive user interface and robust functionality.
 
-## 🔗 Links
+---
 
-- **Live Link**: [https://bitechx-product-hub.vercel.app/](https://bitechx-product-hub.vercel.app/)
+### Developed By: **[Tanzil Rayhan](https://tanzilrayhan.framer.ai/)**
 
+---
+
+**Live Link**: [https://bitechx-product-hub.vercel.app/](https://bitechx-product-hub.vercel.app/)
+
+---
 
 ![Next.js](https://img.shields.io/badge/Next.js-15.5.6-black?style=flat&logo=next.js)
 ![React](https://img.shields.io/badge/React-19.1.0-blue?style=flat&logo=react)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=flat&logo=typescript)
 ![Redux Toolkit](https://img.shields.io/badge/Redux_Toolkit-2.9.1-purple?style=flat&logo=redux)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4.0-38B2AC?style=flat&logo=tailwind-css)
-
----
-
-## 📋 Table of Contents
-
-- [Features](#-features)
-- [Tech Stack](#-tech-stack)
-- [Prerequisites](#-prerequisites)
-- [Installation](#-installation)
-- [Environment Variables](#-environment-variables)
-- [Running the Application](#-running-the-application)
-- [Project Structure](#-project-structure)
-- [API Documentation](#-api-documentation)
-- [Design System](#-design-system)
-- [Validation & Error Handling](#-validation--error-handling)
-- [Contributing](#-contributing)
-- [License](#-license)
 
 ---
 
