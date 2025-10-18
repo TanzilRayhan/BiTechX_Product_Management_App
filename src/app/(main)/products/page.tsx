@@ -125,7 +125,7 @@ export default function ProductsPage() {
           <div className="flex flex-wrap gap-3">
             <button
               onClick={() => setSelectedCategory('')}
-              className={`flex-1 px-6 sm:px-8 md:px-6 py-3 rounded-xl font-medium transition-all duration-300 text-sm sm:text-base min-w-[120px] ${
+              className={`flex-1 px-6 sm:px-8 md:px-6 py-3 rounded-xl font-medium transition-all duration-300 text-sm sm:text-base min-w-[150px] ${
                 selectedCategory === ''
                   ? 'bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] text-white shadow-lg '
                   : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-[#4E6E5D] hover:shadow-md'
@@ -137,7 +137,7 @@ export default function ProductsPage() {
               <button
                 key={category.id}
                 onClick={() => setSelectedCategory(category.id)}
-                className={`flex-1 px-6 sm:px-8 md:px-4 py-3 rounded-xl font-medium transition-all duration-300  text-sm sm:text-base min-w-[120px] ${
+                className={`flex-1 px-6 sm:px-8 md:px-4 py-3 rounded-xl font-medium transition-all duration-300  text-sm sm:text-base min-w-[150px] ${
                   selectedCategory === category.id
                     ? 'bg-gradient-to-r from-[#4E6E5D] to-[#AD8A64] rounded-xl text-white shadow-lg '
                     : 'bg-white text-gray-700 border-2 border-gray-200 hover:border-[#4E6E5D] hover:shadow-md'
@@ -148,16 +148,6 @@ export default function ProductsPage() {
             ))}
           </div>
         </div>
-
-
-      {!isLoading && isFetching && (
-        <div className="fixed top-20 right-4 z-50 bg-white rounded-xl shadow-lg px-4 py-2 border-2 border-[#4E6E5D]/20 animate-fade-in">
-          <div className="flex items-center gap-2">
-            <div className="w-4 h-4 border-2 border-[#4E6E5D] border-t-transparent rounded-full animate-spin"></div>
-            <span className="text-sm text-gray-600 font-medium">Updating...</span>
-          </div>
-        </div>
-      )}
 
 
       {isLoading && (

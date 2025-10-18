@@ -15,8 +15,18 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Product Management App",
-  description: "A comprehensive product management application",
+  title: {
+    default: "Product Hub - Product Management",
+    template: "%s | Product Hub"
+  },
+  description: "A comprehensive product management application for managing your inventory with ease",
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/icon.svg', type: 'image/svg+xml', sizes: '32x32' },
+    ],
+    apple: '/icon.svg',
+  },
 };
 
 export default function RootLayout({

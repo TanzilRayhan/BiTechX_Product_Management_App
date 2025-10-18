@@ -69,9 +69,9 @@ export default function LoginPage() {
       const statusCode = error.response?.status;
       
       if (statusCode === 429) {
-        const retryAfter = error.response?.headers['retry-after'] || 60;
+        const retryAfter = error.response?.headers['retry-after'] || 10;
         toast.error(`Too many login attempts. Please wait ${retryAfter} seconds and try again.`, {
-          duration: 6000,
+          duration: 1000,
           icon: '⏱️',
         });
       } else if (errorMessage?.includes('application') || errorMessage?.includes('applied')) {
